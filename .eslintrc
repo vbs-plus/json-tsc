@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "@evan-yang"
+  ],
+  "rules": {
+    "react/display-name": "off",
+    "react-hooks/rules-of-hooks": "off"
+  }
+}

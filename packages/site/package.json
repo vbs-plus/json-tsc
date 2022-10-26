@@ -1,0 +1,29 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "A Magic project",
+  "packageManager": "pnpm@6.32.3",
+  "private":"true",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src",
+    "typecheck": "vue-tsc --noEmit",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.9.4",
+    "vue": "3.2.37",
+    "vue-router": "4.1.4"
+  },
+  "devDependencies": {
+    "json-tsc": "workspace:*"
+  },
+  "eslintConfig": {
+    "extends": "@evan-yang",
+    "rules": {
+      "no-console": "off"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "@json-tsc/monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@7.13.4",
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm run stub",
+    "docs": "pnpm -C docs run dev",
+    "docs:build": "pnpm -C docs run build",
+    "stub": "pnpm -r --parallel -F \"./packages/{utils,site}\" run dev",
+    "build": "rimraf packages/*/{dist} && pnpm -r -F \"./packages/{utils,site}\" run build",
+    "play": "pnpm -C 'packages/site' dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "bumpp package.json packages/**/package.json",
+    "deploy": "pnpm run build && pnpm run docs:build",
+    "test": "vitest",
+    "test:ci": "pnpm install && pnpm run lint && pnpm run build && pnpm run test",
+    "test:update": "vitest -u",
+    "test:coverage": "vitest --coverage",
+    "volar:helper": "esno scripts/volar-helper"
+  },
+  "devDependencies": {
+    "@evan-yang/eslint-config": "^1.0.1",
+    "@iconify-json/carbon": "^1.1.9",
+    "@iconify-json/fluent-emoji": "^1.1.3",
+    "@iconify-json/logos": "^1.1.17",
+    "@types/node": "18.8.0",
+    "@unocss/reset": "^0.27.6",
+    "@vitejs/plugin-vue": "^3.1.2",
+    "@vitest/coverage-c8": "^0.24.3",
+    "@vitest/ui": "0.24.3",
+    "@vue/test-utils": "^2.2.0",
+    "@vueuse/core": "^9.4.0",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.26.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jsdom": "^19.0.0",
+    "json-tsc": "workspace:*",
+    "lint-staged": "^12.5.0",
+    "pnpm": "^7.14.0",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.8.1",
+    "tsup": "^6.3.0",
+    "typescript": "^4.8.4",
+    "unocss": "^0.27.6",
+    "unplugin-auto-import": "^0.11.4",
+    "unplugin-vue-components": "^0.22.9",
+    "vite": "^3.1.8",
+    "vitepress": "1.0.0-alpha.22",
+    "vitest": "^0.23.4",
+    "vue": "^3.2.41"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,vue,md}": [
+      "eslint packages --fix"
+    ]
+  }
+}
