@@ -4,15 +4,17 @@
   "version": "0.0.0",
   "packageManager": "pnpm@7.12.0",
   "description": "",
-  "author": "yzh990918 <251205668@qq.com>",
+  "keywords": [],
   "license": "MIT",
+  "author": "yzh990918 <251205668@qq.com>",
   "homepage": "https://github.com/yzh990918/json-tsc#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yzh990918/json-tsc.git"
   },
-  "keywords": [],
-  "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -20,9 +22,10 @@
       "import": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "typesVersions": {
     "*": {
       "*": [
@@ -31,9 +34,6 @@
       ]
     }
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"

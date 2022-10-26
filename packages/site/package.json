@@ -1,9 +1,9 @@
 {
   "name": "site",
   "version": "1.0.0",
-  "description": "A Magic project",
-  "packageManager": "pnpm@6.32.3",
   "private":"true",
+  "packageManager": "pnpm@6.32.3",
+  "description": "A Magic project",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
