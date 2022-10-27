@@ -1,5 +1,6 @@
 config:
   title: JSON-TSC 配置选项
+  alert: 在输入 JSON 字段之前，请先去一个 JSON 格式化网站将你的 JSON 转换为标准格式
   prependWithO: 'Interface 以 ''O'' 为开头:'
   sortAlphabetically: '按字母顺序排序:'
   prependExport: '添加 ''export'' 关键字声明:'

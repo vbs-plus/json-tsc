@@ -94,8 +94,13 @@ const handleReset = () => {
     <div m-r-20px m-b-20px w-80>
       <el-card h-full class="card-style">
         <template #header>
-          <div class="card-header">
-            <span>{{ t('config.title') }}</span>
+          <div class="card-header flex flex-col items-start space-y-2">
+            <span text="lg">{{ t('config.title') }}</span>
+            <span text="sm gray-200">{{ t('config.alert') }}</span>
+            <div space-x-2>
+              <span text="sm #38E54D"><a href="https://www.json.cn/" target="_blank">json.cn</a></span>
+              <span text="sm #38E54D"><a href="https://jsonformatter.curiousconcept.com/" target="_blank">jsonformatter</a></span>
+            </div>
           </div>
         </template>
         <div space-y-3>
@@ -149,7 +154,7 @@ const handleReset = () => {
       <div h-90>
         <el-input v-model="inputCode" type="textarea" :placeholder="t('textarea.inputCode')" />
       </div>
-      <div flex-1>
+      <div flex-1 min-h-40>
         <el-input v-model="outputCode" type="textarea" :placeholder="t('textarea.outputCode')" />
       </div>
     </div>

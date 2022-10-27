@@ -31,7 +31,7 @@ const toggleLocales = () => {
         text-lg
         i-carbon-logo-github
         rel="noreferrer"
-        href="https://github.com/251205668/vitest-vue-starter"
+        href="https://github.com/vbs-plus/json-tsc"
         target="_blank"
         title="GitHub"
       />

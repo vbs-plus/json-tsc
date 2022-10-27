@@ -1,5 +1,6 @@
 config:
   title: JSON-TSC Config
+  alert: Before entering a json field, go to a json formatting site to convert your json to a standard format
   prependWithO: 'Begins with the letter O:'
   sortAlphabetically: 'Sort by letter:'
   prependExport: 'Add export staement:'
