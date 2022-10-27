@@ -1,18 +1,18 @@
 config:
-  title: "JSON-TSC Config"
-  prependWithO: "Begins with the letter O:"
-  sortAlphabetically: "Sort by letter:"
-  prependExport: "Add export staement:"
-  useArrayGeneric: "Use Array notaion:"
-  optionalFields: "Use optional fields:"
-  prefix: "Please input the interface prefix"
-  rootObjectName: "Please input the root object name"
+  title: JSON-TSC Config
+  prependWithO: 'Begins with the letter O:'
+  sortAlphabetically: 'Sort by letter:'
+  prependExport: 'Add export staement:'
+  useArrayGeneric: 'Use Array notaion:'
+  optionalFields: 'Use optional fields:'
+  prefix: Please input the interface prefix
+  rootObjectName: Please input the root object name
 btn:
-  transform: "Transform"
-  copied: "Copied"
-  Copy: "Copy Result"
-  import_first: "Example 1: JSON fragment"
-  import_second: "Example 2: JSON fragment"
+  transform: Transform
+  copied: Copied
+  Copy: Copy Result
+  import_first: 'Example 1: JSON fragment'
+  import_second: 'Example 2: JSON fragment'
 textarea:
-  inputCode: "Please input the json"
-  outputCode: "Show the transformed interface code"
+  inputCode: Please input the json
+  outputCode: Show the transformed interface code
