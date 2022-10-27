@@ -8,11 +8,6 @@ const deefaultRouterList: Array<RouteRecordRaw> = [
     component: () => import ('@/pages/home/index.vue'),
   },
   {
-    path: '/hi/:name',
-    name: 'Hi',
-    component: () => import ('@/pages/hi/index.vue'),
-  },
-  {
     path: '/*',
     name: '404Page',
     component: () => import ('@/pages/404.vue'),

@@ -18,7 +18,8 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
-      "vite/client"
+      "vite/client",
+      "element-plus/global"
     ],
     "paths": {
       "@/*": [

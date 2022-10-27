@@ -12,11 +12,6 @@
     "preview": "vite preview",
     "test": "vitest"
   },
-  "dependencies": {
-    "@vueuse/core": "^8.9.4",
-    "vue": "3.2.37",
-    "vue-router": "4.1.4"
-  },
   "devDependencies": {
     "json-tsc": "workspace:*"
   },

@@ -20,7 +20,14 @@
       "vite/client"
     ],
     "paths": {
-      "json-tsc": ["./packages/utils/src/index.ts"],
+      "json-tsc": [
+        "./packages/utils/src/index.ts"
+      ],
     }
   },
+  "exclude": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/test/dts/**",
+  ],
 }

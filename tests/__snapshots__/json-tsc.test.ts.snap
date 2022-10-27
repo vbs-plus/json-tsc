@@ -1,0 +1,105 @@
+// Vitest Snapshot v1
+
+exports[`json-tsc transform > show work with custom config 1`] = `
+"type JSON_TSC = OTESTRootObject
+
+interface OTESTRootObject {
+  BigIntSupported?: number;
+  city?: string;
+  count?: number;
+  data?: OTESTData;
+  date?: string;
+  message?: string;
+  status?: number;
+}
+
+interface OTESTData {
+  forecast?: Array<OTESTForecast>;
+  ganmao?: string;
+  pm10?: number;
+  pm25?: number;
+  quality?: string;
+  shidu?: string;
+  wendu?: string;
+  yesterday?: OTESTYesterday;
+}
+
+interface OTESTYesterday {
+  aqi?: number;
+  date?: string;
+  fl?: string;
+  fx?: string;
+  high?: string;
+  low?: string;
+  notice?: string;
+  sunrise?: string;
+  sunset?: string;
+  type?: string;
+}
+
+interface OTESTForecast {
+  aqi?: number;
+  date?: string;
+  fl?: string;
+  fx?: string;
+  high?: string;
+  low?: string;
+  notice?: string;
+  sunrise?: string;
+  sunset?: string;
+  type?: string;
+}
+"
+`;
+
+exports[`json-tsc transform > show work with default config 1`] = `
+"type JSON_TSC = ORootObject
+
+export interface ORootObject {
+  BigIntSupported: number;
+  date: string;
+  message: string;
+  status: number;
+  city: string;
+  count: number;
+  data: OData;
+}
+
+export interface OData {
+  shidu: string;
+  pm25: number;
+  pm10: number;
+  quality: string;
+  wendu: string;
+  ganmao: string;
+  yesterday: OYesterday;
+  forecast: OForecast[];
+}
+
+export interface OYesterday {
+  date: string;
+  sunrise: string;
+  high: string;
+  low: string;
+  sunset: string;
+  aqi: number;
+  fx: string;
+  fl: string;
+  type: string;
+  notice: string;
+}
+
+export interface OForecast {
+  date: string;
+  sunrise: string;
+  high: string;
+  low: string;
+  sunset: string;
+  aqi: number;
+  fx: string;
+  fl: string;
+  type: string;
+  notice: string;
+}
+"
+`;
