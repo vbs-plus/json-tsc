@@ -4,4 +4,7 @@
   },
   "editor.formatOnSave": false,
   "unocss.root": "./packages/site",
+  "i18n-ally.localesPaths": [
+    "packages/site/locales"
+  ],
 }

@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Bg: typeof import('./src/components/layout/bg.vue')['default']
     Counter: typeof import('./src/components/Counter.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElInput: typeof import('element-plus/es')['ElInput']

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ElMessage, ElNotification } from 'element-plus'
+import { ElNotification } from 'element-plus'
 import { JSON_TSC } from 'json-tsc'
+import { example1, example2 } from '../../constants'
+
 const inputCode = ref('')
 const outputCode = ref('')
 const configModel = reactive({
@@ -16,6 +18,14 @@ const configModel = reactive({
 const { t } = useI18n()
 
 const handleTransform = () => {
+  if (!inputCode.value) {
+    ElNotification({
+      title: 'Warning',
+      message: 'The json field is required !',
+      type: 'warning',
+    })
+    return
+  }
   const json_tsc = new JSON_TSC(unref(configModel))
 
   try {
@@ -34,12 +44,48 @@ const { copy, copied } = useClipboard({ source: decodeURIComponent(outputCode.va
 
 const handleCopy = () => {
   if (outputCode.value) {
-    copy(decodeURIComponent(outputCode.value))
-    ElMessage({
-      message: 'Copied Success!',
-      type: 'success',
+    try {
+      copy(decodeURIComponent(outputCode.value))
+      ElNotification({
+        title: 'Success',
+        message: 'Copied to clipboard Successfully!',
+        type: 'success',
+      })
+    } catch (e:any) {
+      ElNotification({
+        title: 'Copy Error',
+        message: e.message,
+        type: 'error',
+      })
+    }
+  }
+}
+
+const handleImport = (type: string) => {
+  const json_tsc = new JSON_TSC(unref(configModel))
+  try {
+    inputCode.value = JSON.stringify(type === 'example1' ? example1 : example2)
+    const json = JSON.parse(JSON.stringify(type === 'example1' ? example1 : example2))
+    outputCode.value = json_tsc.transform(json)
+  } catch (e: any) {
+    ElNotification({
+      title: 'Error',
+      message: e.message,
+      type: 'error',
     })
   }
+}
+
+const handleReset = () => {
+  inputCode.value = ''
+  outputCode.value = ''
+  configModel.optionalFields = false
+  configModel.prependExport = true
+  configModel.prependWithO = true
+  configModel.sortAlphabetically = false
+  configModel.useArrayGeneric = false
+  configModel.prefix = ''
+  configModel.rootObjectName = 'RootObject'
 }
 </script>
 
@@ -54,45 +100,57 @@ const handleCopy = () => {
         </template>
         <div space-y-3>
           <div flex justify-between items-center>
-            <span>Begins with the letter O:</span>
+            <span>{{ t('config.prependWithO') }}</span>
             <el-switch v-model="configModel.prependWithO" style="--el-switch-on-color: #38E54D" />
           </div>
           <div flex justify-between items-center>
-            <span>Sort by letter:</span>
+            <span>{{ t('config.sortAlphabetically') }}</span>
             <el-switch v-model="configModel.sortAlphabetically" style="--el-switch-on-color: #38E54D" />
           </div>
           <div flex justify-between items-center>
-            <span>Add export staement:</span>
+            <span>{{ t('config.prependExport') }}</span>
             <el-switch v-model="configModel.prependExport" style="--el-switch-on-color: #38E54D" />
           </div>
           <div flex justify-between items-center>
-            <span>Use Array notaion:</span>
+            <span>{{ t('config.useArrayGeneric') }}</span>
             <el-switch v-model="configModel.useArrayGeneric" style="--el-switch-on-color: #38E54D" />
           </div>
           <div flex justify-between items-center>
-            <span>Use optional fields:</span>
+            <span>{{ t('config.optionalFields') }}</span>
             <el-switch v-model="configModel.optionalFields" style="--el-switch-on-color: #38E54D" />
           </div>
         </div>
         <el-divider />
         <div space-y-3>
-          <el-input v-model="configModel.prefix" placeholder="Please input the interface prefix" />
-          <el-input v-model="configModel.rootObjectName" placeholder="Please input the root object name" />
+          <el-input v-model="configModel.prefix" :placeholder="t('config.prefix')" />
+          <el-input v-model="configModel.rootObjectName" :placeholder="t('config.rootObjectName')" />
           <button class="grident-btn" @click="handleTransform">
-            Transform
+            {{ t('btn.transform') }}
           </button>
           <button class="grident-btn" @click="handleCopy">
-            {{ copied ? 'Copied' : 'Copy Result' }}
+            {{ copied ? t('btn.copied') : t('btn.copy') }}
           </button>
+          <button class="grident-btn" @click="handleReset">
+            {{ t('btn.reset') }}
+          </button>
+        </div>
+        <el-divider />
+        <div flex justify="between" flex-wrap>
+          <el-button link @click="handleImport('example1')">
+            {{ t('btn.import_first') }}
+          </el-button>
+          <el-button link style="margin-left: 0" @click="handleImport('example2')">
+            {{ t('btn.import_second') }}
+          </el-button>
         </div>
       </el-card>
     </div>
     <div flex-1 space-y-4 flex flex-col m-b-20px>
       <div h-90>
-        <el-input v-model="inputCode" type="textarea" placeholder="Please input the json" />
+        <el-input v-model="inputCode" type="textarea" :placeholder="t('textarea.inputCode')" />
       </div>
       <div flex-1>
-        <el-input v-model="outputCode" type="textarea" placeholder="Show the transformed code" />
+        <el-input v-model="outputCode" type="textarea" :placeholder="t('textarea.outputCode')" />
       </div>
     </div>
   </div>
@@ -170,5 +228,8 @@ const handleCopy = () => {
   --el-input-focus-border-color: rgba(255, 255, 255, 1);
   --el-input-placeholder-color: #EDEDED;
   height: 100%;
+}
+:deep(.el-button.is-link) {
+  color: #68efaf;
 }
 </style>

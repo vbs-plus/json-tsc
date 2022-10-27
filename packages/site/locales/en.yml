@@ -9,10 +9,12 @@ config:
   rootObjectName: Please input the root object name
 btn:
   transform: Transform
+  reset: Reset
   copied: Copied
-  Copy: Copy Result
+  copy: Copy Result
   import_first: 'Example 1: JSON fragment'
   import_second: 'Example 2: JSON fragment'
+  toggle_langs: Change languages
 textarea:
   inputCode: Please input the json
   outputCode: Show the transformed interface code

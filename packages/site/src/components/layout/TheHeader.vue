@@ -1,3 +1,13 @@
+<script setup lang="ts">
+const { t, availableLocales, locale } = useI18n()
+
+const toggleLocales = () => {
+  // change to some real logic
+  const locales = availableLocales
+  locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
+}
+</script>
+
 <template>
   <header h-16 flex justify-between items-center px-8>
     <div flex justify-start items-center gap-4>
@@ -6,15 +16,26 @@
         JSON-TSC
       </h1>
     </div>
-    <a
-      class="icon-btn"
-      text-lg
-      i-carbon-logo-github
-      rel="noreferrer"
-      href="https://github.com/251205668/vitest-vue-starter"
-      target="_blank"
-      title="GitHub"
-    />
+
+    <div flex space-x-4>
+      <a
+        class="icon-btn mx-2"
+        :class="locale === 'en' ? '' : '-rotate-y-180'"
+        :title="t('btn.toggle_langs')"
+        @click="toggleLocales()"
+      >
+        <div i-carbon:translate />
+      </a>
+      <a
+        class="icon-btn"
+        text-lg
+        i-carbon-logo-github
+        rel="noreferrer"
+        href="https://github.com/251205668/vitest-vue-starter"
+        target="_blank"
+        title="GitHub"
+      />
+    </div>
   </header>
 </template>
 

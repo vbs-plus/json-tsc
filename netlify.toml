@@ -1,0 +1,11 @@
+[build.environment]
+  NPM_FLAGS = "--version"
+  NODE_VERSION = "16"
+
+[build]
+  publish = "packages/site/dist"
+  command = "npx pnpm@7.5.0 i --frozen-lockfile false && npx pnpm@7.5.0 build && npx pnpm@7.5.0 run deploy"
+  ignore = "git diff --quiet HEAD^ HEAD . ../packages"
+
+[functions]
+  node_bundler = "esbuild"
