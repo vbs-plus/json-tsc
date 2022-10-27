@@ -4,8 +4,24 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  --scrollbar-thumb: rgb(211, 207, 207);
+  --scrollbar-track: initial;
+
 }
 
 html.dark {
   background: #121212;
+}
+
+::-webkit-scrollbar {
+    width: 4px;  
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
 }

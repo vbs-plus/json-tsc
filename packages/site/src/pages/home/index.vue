@@ -1,6 +1,8 @@
 <script setup lang="ts">
-const inputCode = $ref('')
-const outputCode = $ref('')
+import { ElMessage, ElNotification } from 'element-plus'
+import { JSON_TSC } from 'json-tsc'
+const inputCode = ref('')
+const outputCode = ref('')
 const configModel = reactive({
   prependWithO: true,
   sortAlphabetically: false,
@@ -10,6 +12,35 @@ const configModel = reactive({
   prefix: '',
   rootObjectName: 'RootObject',
 })
+
+const { t } = useI18n()
+
+const handleTransform = () => {
+  const json_tsc = new JSON_TSC(unref(configModel))
+
+  try {
+    const json = JSON.parse(inputCode.value)
+    outputCode.value = json_tsc.transform(json)
+  } catch (e: any) {
+    ElNotification({
+      title: 'Error',
+      message: e.message,
+      type: 'error',
+    })
+  }
+}
+
+const { copy, copied } = useClipboard({ source: decodeURIComponent(outputCode.value) })
+
+const handleCopy = () => {
+  if (outputCode.value) {
+    copy(decodeURIComponent(outputCode.value))
+    ElMessage({
+      message: 'Copied Success!',
+      type: 'success',
+    })
+  }
+}
 </script>
 
 <template>
@@ -18,47 +49,47 @@ const configModel = reactive({
       <el-card h-full class="card-style">
         <template #header>
           <div class="card-header">
-            <span>JSON-TSC Config</span>
+            <span>{{ t('config.title') }}</span>
           </div>
         </template>
         <div space-y-3>
           <div flex justify-between items-center>
-            <span text="#38E54D">Begins with the letter O:</span>
+            <span>Begins with the letter O:</span>
             <el-switch v-model="configModel.prependWithO" style="--el-switch-on-color: #38E54D" />
           </div>
           <div flex justify-between items-center>
-            <span text="#FF6D28">Sort by letter:</span>
-            <el-switch v-model="configModel.sortAlphabetically" style="--el-switch-on-color: #FF6D28" />
+            <span>Sort by letter:</span>
+            <el-switch v-model="configModel.sortAlphabetically" style="--el-switch-on-color: #38E54D" />
           </div>
           <div flex justify-between items-center>
-            <span text="#00F5FF">Add export staement:</span>
-            <el-switch v-model="configModel.prependExport" style="--el-switch-on-color: #00F5FF" />
+            <span>Add export staement:</span>
+            <el-switch v-model="configModel.prependExport" style="--el-switch-on-color: #38E54D" />
           </div>
           <div flex justify-between items-center>
-            <span text="#8758FF">Use Array notaion:</span>
-            <el-switch v-model="configModel.useArrayGeneric" style="--el-switch-on-color: #8758FF" />
+            <span>Use Array notaion:</span>
+            <el-switch v-model="configModel.useArrayGeneric" style="--el-switch-on-color: #38E54D" />
           </div>
           <div flex justify-between items-center>
-            <span text="#FF577F">Use optional fields:</span>
-            <el-switch v-model="configModel.optionalFields" style="--el-switch-on-color: #FF577F" />
+            <span>Use optional fields:</span>
+            <el-switch v-model="configModel.optionalFields" style="--el-switch-on-color: #38E54D" />
           </div>
         </div>
         <el-divider />
         <div space-y-3>
           <el-input v-model="configModel.prefix" placeholder="Please input the interface prefix" />
           <el-input v-model="configModel.rootObjectName" placeholder="Please input the root object name" />
-          <button class="grident-btn">
-            Format input code
-          </button>
-          <button class="grident-btn">
+          <button class="grident-btn" @click="handleTransform">
             Transform
+          </button>
+          <button class="grident-btn" @click="handleCopy">
+            {{ copied ? 'Copied' : 'Copy Result' }}
           </button>
         </div>
       </el-card>
     </div>
     <div flex-1 space-y-4 flex flex-col m-b-20px>
       <div h-90>
-        <el-input v-model="inputCode" type="textarea" placeholder="Please input inputCode" />
+        <el-input v-model="inputCode" type="textarea" placeholder="Please input the json" />
       </div>
       <div flex-1>
         <el-input v-model="outputCode" type="textarea" placeholder="Show the transformed code" />

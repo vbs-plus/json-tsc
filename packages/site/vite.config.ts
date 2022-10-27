@@ -7,6 +7,7 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import VueI18n from '@intlify/vite-plugin-vue-i18n'
 
 export default defineConfig({
   base: './',
@@ -25,6 +26,7 @@ export default defineConfig({
       imports: [
         'vue',
         'vue/macros',
+        'vue-i18n',
         'vue-router',
         '@vueuse/core',
       ],
@@ -36,6 +38,12 @@ export default defineConfig({
     Components({
       dts: true,
       resolvers: [ElementPlusResolver()],
+    }),
+
+    VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
+      include: [path.resolve(__dirname, 'locales/**')],
     }),
 
     // https://github.com/antfu/unocss
