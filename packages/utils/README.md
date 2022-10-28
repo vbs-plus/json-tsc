@@ -5,7 +5,7 @@
 <p align="center">
 <a href="https://www.npmjs.com/package/json-tsc"><img src="https://img.shields.io/npm/v/json-tsc?color=c95f8b&amp;label=" alt="NPM version"></a></p>
 <p align="center">
-<a href="https://onu.zyob.top/">🤹‍♂️ Preview</a>
+<a href="https://json-tsc.netlify.app/#/">🤹‍♂️ Preview</a>
 </p>
 
 ## Features
@@ -107,9 +107,9 @@ export interface JSON_TSC_CONFIG {
 
 ```
 
-## [Use it Now]()
+## [Use it Now](https://json-tsc.netlify.app/#/)
 
-![image](https://raw.githubusercontent.com/imageList/imglist/master/20221027234023.png)
+![image](https://raw.githubusercontent.com/imageList/imglist/master/20221028003122.png)
 
 
 ## Development
