@@ -1,6 +1,6 @@
 {
   "name": "@json-tsc/monorepo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "packageManager": "pnpm@7.13.4",
   "license": "MIT",
@@ -53,15 +53,15 @@
     "vitepress": "1.0.0-alpha.22",
     "vitest": "^0.24.3",
     "vue": "3.2.39",
-    "vue-router": "^4.1.6",
-    "vue-i18n": "^9.2.2"
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.1.6"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "*.{js,ts,tsx,vue,md}": [
-      "eslint packages --fix"
+      "eslint . --fix"
     ]
   }
 }
