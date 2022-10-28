@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from '@vueuse/core'
 import { ElNotification } from 'element-plus'
 import { JSON_TSC } from 'json-tsc'
 import { example1, example2 } from '../../constants'
 
 const inputCode = ref('')
 const outputCode = ref('')
+const smallerThanSM = useBreakpoints(breakpointsTailwind).smaller('sm')
 const configModel = reactive({
   prependWithO: true,
   sortAlphabetically: false,
@@ -90,8 +92,8 @@ const handleReset = () => {
 </script>
 
 <template>
-  <div flex flex-wrap w-full h-full>
-    <div m-r-20px m-b-20px w-80>
+  <div flex w-full h-full :class="smallerThanSM && 'flex-wrap'">
+    <div m-r-20px m-b-20px w-80 :class="smallerThanSM && 'w-full !m-r-0'">
       <el-card h-full class="card-style">
         <template #header>
           <div class="card-header flex flex-col items-start space-y-2">
@@ -154,7 +156,7 @@ const handleReset = () => {
       <div h-90>
         <el-input v-model="inputCode" type="textarea" :placeholder="t('textarea.inputCode')" />
       </div>
-      <div flex-1 min-h-40>
+      <div :class="smallerThanSM ? 'h-90' : 'flex-1'">
         <el-input v-model="outputCode" type="textarea" :placeholder="t('textarea.outputCode')" />
       </div>
     </div>
