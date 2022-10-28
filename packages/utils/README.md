@@ -1,5 +1,4 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/imageList/imglist/master/logo.png" style="width:200px" />
 <h1 align="center">JSON-TSC</h1>
 <p align="center">A plugin that makes it easier to convert JSON to Typescript types.</p>
 </p>
