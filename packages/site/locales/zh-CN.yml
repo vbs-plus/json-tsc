@@ -16,6 +16,7 @@ btn:
   import_first: '示例1: JSON片段'
   import_second: '示例2: JSON片段'
   toggle_langs: 切换语言
+  format: 格式化代码
 textarea:
   inputCode: 请输入 JSON 代码
   outputCode: 查看您的 interface 代码

@@ -16,6 +16,7 @@ btn:
   import_first: 'Example 1: JSON fragment'
   import_second: 'Example 2: JSON fragment'
   toggle_langs: Change languages
+  format: Format code
 textarea:
   inputCode: Please input the json
   outputCode: Show the transformed interface code

@@ -2,6 +2,7 @@
 import { breakpointsTailwind } from '@vueuse/core'
 import { ElNotification } from 'element-plus'
 import { JSON_TSC } from 'json-tsc'
+import { usePrettier, useTsPrettier } from '@/composables/usePrettier'
 import { example1, example2 } from '../../constants'
 
 const inputCode = ref('')
@@ -18,6 +19,28 @@ const configModel = reactive({
 })
 
 const { t } = useI18n()
+
+const handleFormat = () => {
+  if (!inputCode.value && !outputCode.value) {
+    ElNotification({
+      title: 'Warning',
+      message: 'The json field is required !',
+      type: 'warning',
+    })
+    return
+  }
+
+  try {
+    inputCode.value = usePrettier(inputCode.value)
+    outputCode.value = useTsPrettier(outputCode.value)
+  } catch (e: any) {
+    ElNotification({
+      title: 'Error',
+      message: e.message,
+      type: 'error',
+    })
+  }
+}
 
 const handleTransform = () => {
   if (!inputCode.value) {
@@ -139,6 +162,9 @@ const handleReset = () => {
           </button>
           <button class="grident-btn" @click="handleReset">
             {{ t('btn.reset') }}
+          </button>
+          <button class="grident-btn" @click="handleFormat">
+            {{ t('btn.format') }}
           </button>
         </div>
         <el-divider />
