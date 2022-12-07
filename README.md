@@ -110,7 +110,7 @@ export interface JSON_TSC_CONFIG {
 
 ## [Use it Now](https://json-tsc.netlify.app/#/)
 
-![image](https://raw.githubusercontent.com/imageList/imglist/master/20221028003122.png)
+<img width="1713" alt="image" src="https://user-images.githubusercontent.com/46418596/206120026-f591d280-0ec8-4e1e-8237-2faecfa1bec7.png">
 
 
 ## Development
