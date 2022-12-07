@@ -3,8 +3,8 @@ config:
   alert: Before entering a json field, go to a json formatting site to convert your json to a standard format
   prependWithO: 'Begins with the letter O:'
   sortAlphabetically: 'Sort by letter:'
-  prependExport: 'Add export staement:'
-  useArrayGeneric: 'Use Array notaion:'
+  prependExport: 'Add export statement:'
+  useArrayGeneric: 'Use Array notation:'
   optionalFields: 'Use optional fields:'
   prefix: Please input the interface prefix
   rootObjectName: Please input the root object name
